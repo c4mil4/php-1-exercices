@@ -1,0 +1,13 @@
+{
+    "name": "xur174/php-1-exercices",
+    "authors": [
+        {
+            "name": "camila martinez",
+            "email": "martinezcamila@gmail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
+}

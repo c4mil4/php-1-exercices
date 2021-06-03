@@ -3,7 +3,7 @@
 use PHPUnit\Framework\TestCase;
 use function PHPUnit\Framework\assertEquals;
 
-require_once('./src/ejercicios.php');
+require_once('./src/ejercicios.php'); //importo fichero con funcion
 
 final class EjercicioSumArrayTest extends TestCase
 {
@@ -11,6 +11,6 @@ final class EjercicioSumArrayTest extends TestCase
   public function testSumArray(): void
   {
     $input = [3, 6, 1, -5, 0, 4];
-    assertEquals(9, sumArray($input));
+    assertEquals(9, sumArray($input)); //uso funcion de fichero ejercicios.
   }
 }

@@ -5,13 +5,11 @@
     <meta charset="UTF-8">
     <title>PHP Exercice</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="/assets/main.css" >
-    <?php  require "./links.php" ?>
+    
 </head>
 
 <body>
-    
-    <?php  include("./links.php")?>
+  
   
     <?php
     $weeekDays = [
@@ -24,13 +22,28 @@
         7 => 'domingo',
     ];
     ?>
-
-    <?php 
-        ($_GET);
-    ?>
-    <h1>Hola, <?= $_GET['token']; ?></h1>
+    <h1>Hola, Ca</h1>
     <p>Hoy es <strong><?= $weeekDays[date('N')]; ?></strong>. ¿Qué tal estás?</p>
-    <script src="/assets/main.js"></script>
 </body>
 
 </html>
+
+<?php
+
+function hola () {
+    function adios () {
+        echo 'adios'.PHP_EOL;
+    }
+    
+    echo 'hola'.PHP_EOL;
+    
+}
+
+function saludos () {
+    // hola(); // Fatal error: Cannot redeclare adios()
+    adios(); // No redeclara variable.
+}
+
+hola();
+adios();
+saludos();

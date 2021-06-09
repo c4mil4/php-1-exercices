@@ -1,48 +1,24 @@
- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
+<?php
+require $_SERVER['DOCUMENT_ROOT'] . '/lib/app.php';
+
+
+$stm = $dbConnexion->query('SELECT * FROM employees');// devuelve objeto statment
+$people = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+var_dump($stm);
+var_dump($result);
+die();
+?>
 <?php
 
-  $people = [
-      ['name' => 'Carlos', 'email' => 'carlos@correo.com', 'age' => 30, 'city' => 'Benalmádena'],
-      ['name' => 'Carmen', 'email' => 'carmen@correo.com', 'age' => 25, 'city' => 'Fuengirola'],
-      ['name' => 'Carmelo', 'email' => 'carmelo@correo.com', 'age' => 35, 'city' => 'Torremolinos'],
-      ['name' => 'Carolina', 'email' => 'carolina@correo.com', 'age' => 38, 'city' => 'Málaga'],
-  ];
+$people = [
+['name' => 'Carlos', 'email' => 'carlos@correo.com', 'age' => 20, 'city' => 'Benalmádena'],
+['name' => 'Mari Carmen', 'email' => 'carmen@correo.com', 'age' => 15, 'city' => 'Fuengirola'],
+['name' => 'Carmelo', 'email' => 'carmelo@correo.com', 'age' => 17, 'city' => 'Torremolinos'],
+['name' => 'Carolina', 'email' => 'carolina@correo.com', 'age' => 18, 'city' => 'Málaga'],
+];
 
-?> 
-<?php include("./links.php") ?>
-    <table>
-    <thead>
-    <tr>
-      <td>Nombre</td>      
-      <td>Email</td>      
-      <td>Edad</td>      
-      <td>Ciudad</td>      
-         
-    </tr>
-    </thead>
+?>
+<?php
 
-    <tbody>
-    <?php foreach ($people as $person) : ?>
-    <tr>
-      <td><?php echo $person['name']?></td>      
-      <td><?php echo $person['email']?></td>      
-      <td><?php echo $person['age']?></td>      
-      <td><?php echo $person['city']?></td>      
-      
-    </tr>
-    <?php endforeach; ?>
-    </tbody>
-    </table>
-
-
-
-
-</body>
-</html>
+require $_SERVER['DOCUMENT_ROOT'] . '/employees_'.(isset($_GET['format']) && in_array($_GET['format'], ['json', 'xml']) ? $_GET['format'] : 'html').'.php';

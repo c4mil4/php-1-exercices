@@ -21,9 +21,10 @@
 
 ?> 
 <?php include("./links.php") ?>
-    <table>
+    <table border="1">
     <thead>
     <tr>
+      <td>Id</td>      
       <td>Nombre</td>      
       <td>Email</td>      
       <td>Edad</td>      
@@ -35,18 +36,36 @@
     <tbody>
     <?php foreach ($people as $person) : ?>
     <tr>
-      <td><?php echo $person['name']?></td>      
-      <td><?php echo $person['email']?></td>      
-      <td><?php echo $person['age']?></td>      
-      <td><?php echo $person['city']?></td>      
-      
+      <td><?= $person['id']?></td>      
+      <td><?= $person['name']?></td>           
+      <td><a href="/employees.php)id=<?= $person['id']; ?>"><?= $person['email']?></a></td>      
+      <td><?= $person['city'] ?></td>      
     </tr>
     <?php endforeach; ?>
     </tbody>
     </table>
+      <?php if(isset($_GET['message'])) :?>
+      <p><?= $_GET['message']; ?></p>
+      <?php endif;?>
+    <hr/> 
+    <form method="POST" action="/employees_add.php" enctype="multipart/form-data">
+      <label for="name">Nombre</label>
+      <input type="text" id="name" name="name" required/>
+      <br/>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required/>
+      <br/>
+      <label for="age">Edad</label>
+      <input type="number" id="age" name="age" required/>
+      <br/>
+      <label for="city">Ciudad</label>
+      <input type="text" id="city" name="city" />
+      <hr/>
+      <input type="submit" value="Enviar"/>
+    </form>
 
 
 
-
+  <?php require 'partial/footer.php'?>
 </body>
 </html>

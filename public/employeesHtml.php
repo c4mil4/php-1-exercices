@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/main.css">
     
 </head>
 <body>
@@ -40,11 +41,12 @@
       <td><?= $person['name']?></td>           
       <td><a href="/employees.php)id=<?= $person['id']; ?>"><?= $person['email']?></a></td>      
       <td><?= $person['city'] ?></td>      
+      <td><button class="employees-delete-button" value="Eliminar" data-person=<?= json_encode($person)?>Delete</button></td>  
     </tr>
     <?php endforeach; ?>
     </tbody>
     </table>
-      <?php if(isset($_GET['message'])) :?>
+      <?php if (isset($_GET['message'])) :?>
       <p><?= $_GET['message']; ?></p>
       <?php endif;?>
     <hr/> 
@@ -60,6 +62,10 @@
       <br/>
       <label for="city">Ciudad</label>
       <input type="text" id="city" name="city" />
+      <hr/>
+      <br/>
+        <label for="archivo">Archivo</label>
+        <input type="file" id="archivo" name="archivo" />
       <hr/>
       <input type="submit" value="Enviar"/>
     </form>

@@ -1,22 +1,37 @@
 <?php
-require $_SERVER['DOCUMENT_ROOT'] . '/lib/app.php';
+    require $_SERVER['DOCUMENT_ROOT'] . '/lib/app.php';
 
+    $stm = $dbConnexion->query('SELECT * FROM employees');// devuelve objeto statment
+    //isset válida si está definida la variable o algún item del array y es diferente de null
+    // $query = (isset($_GET['id']))
+    // ? 'SELECT * FROM employees WHERE id=' .$_GET['id']
+    // : 'SELECT * FROM employees';
+    //POdríamos utilizar otros parámetros como email, name, etc con un condicional if/elseif
 
-$stm = $dbConnexion->query('SELECT * FROM employees');// devuelve objeto statment
-$people = $stm->fetchAll(PDO::FETCH_ASSOC);
+    $people = $stm->fetchAll(PDO::FETCH_ASSOC);
+    $people = $stm->fetchAll(PDO::FETCH_ASSOC);
+    $query = 'SELECT * FROM employees';
+    if (isset($_GET['id'])) {
+        $query = 'SELECT * FROM employees WHERE id = :identifiador';
+    } elseif (isset($_GET['email'])) {
+        $query = 'SELECT * FROM employees WHERE email = :correo';
+    };
+      // $stm = $dbConnexion->query($query);
 
-var_dump($stm);
-var_dump($result);
-die();
 ?>
 <?php
 
-/* $people = [
-['name' => 'Carlos', 'email' => 'carlos@correo.com', 'age' => 20, 'city' => 'Benalmádena'],
-['name' => 'Mari Carmen', 'email' => 'carmen@correo.com', 'age' => 15, 'city' => 'Fuengirola'],
-['name' => 'Carmelo', 'email' => 'carmelo@correo.com', 'age' => 17, 'city' => 'Torremolinos'],
-['name' => 'Carolina', 'email' => 'carolina@correo.com', 'age' => 18, 'city' => 'Málaga'],
-]; */
+$stm = $dbConnexion->prepare($query); //Hace lo mismo que query pero evita el entrecomillado
+
+if (isset($_GET['id'])) {
+    $stm->bindParam(':identifiador', $_GET['id']);
+} elseif (isset($_GET['email'])) {
+    $stm->bindParam(':correo', $_GET['email']);
+};
+
+$stm->execute();
+
+$people = $stm->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <?php

@@ -28,7 +28,7 @@
     <?php 
         ($_GET);
     ?>
-    <h1>Hola, <?= $_GET['token']; ?></h1>
+    <h1>Hola, Ca< <?= $_GET['token']; ?></h1>
     <p>Hoy es <strong><?= $weeekDays[date('N')]; ?></strong>. ¿Qué tal estás?</p>
     <script src="/assets/main.js"></script>
 </body>

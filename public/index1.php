@@ -9,8 +9,6 @@
 </head>
 
 <body>
-  
-  
     <?php
     $weeekDays = [
         1 => 'lunes',

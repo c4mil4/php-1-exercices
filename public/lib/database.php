@@ -1,13 +1,15 @@
 <?php
 
 $dbUser = 'root';
-$dbPassword = '123456';
+$dbPassword = 'root';
 $dbHost = 'localhost';
-$dbDatabase = 'employees'; //Crear base de datos
+$dbDatabase = 'employees';
 
 try {
-$dbConnexion = new PDO("mysql:host=${dbHost};dbname=${dbDatabase}", $dbUser, $dbPassword);
-$dbConnexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-echo 'Error en la conexión a la base de datos: ' . $e->getMessage();
+    $dbConnexion = new PDO("mysql:host=${dbHost};dbname=${dbDatabase}", $dbUser, $dbPassword);
+    $dbConnexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) { //catch siempre recibe una excepción, $e se refiere al lenguage tipado
+    echo 'Error en la conexión a la base de datos: ' . $e->getmessage();
 }
+
+?>
